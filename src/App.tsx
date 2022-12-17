@@ -1,32 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
+import { useState, ChangeEvent } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [height, setHeight] = useState<number>(400 / 2);
+  const [width, setWidth] = useState<number>(800 / 2);
+
+  const handleOnWidthChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setWidth(parseInt(event.target.value));
+  };
+
+  const handleOnHeightChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setHeight(parseInt(event.target.value));
+  };
+
 
   return (
-    <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src="/vite.svg" className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="container">
+      <div className="input-container">
+        <label className="label" htmlFor="widthRange">Width {width}px</label>
+        <input
+          id="widthRange"
+          type="range"
+          max={800}
+          min={1}
+          step={1}
+          value={width}
+          onChange={handleOnWidthChange}
+        />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
+
+      <div className="input-container">
+        <label className="label" htmlFor="heightRange">Height {height}px</label>
+        <input
+          id="heightRange"
+          type="range"
+          max={400}
+          min={1}
+          step={1}
+          value={height}
+          onChange={handleOnHeightChange}
+        />
       </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+
+      <div className="box" style={{ width, height }} />
     </div>
   )
 }
