@@ -1,4 +1,7 @@
 import { useState, ChangeEvent } from 'react'
+
+import RangeInput from './components/RangeInput';
+
 import './App.css'
 
 function App() {
@@ -16,31 +19,26 @@ function App() {
 
   return (
     <div className="container">
-      <div className="input-container">
-        <label className="label" htmlFor="widthRange">Width {width}px</label>
-        <input
-          id="widthRange"
-          type="range"
-          max={800}
-          min={1}
-          step={1}
-          value={width}
-          onChange={handleOnWidthChange}
-        />
-      </div>
 
-      <div className="input-container">
-        <label className="label" htmlFor="heightRange">Height {height}px</label>
-        <input
-          id="heightRange"
-          type="range"
-          max={400}
-          min={1}
-          step={1}
-          value={height}
-          onChange={handleOnHeightChange}
-        />
-      </div>
+      <RangeInput
+        label={`Width ${width}px`}
+        id="widthRange"
+        max={800}
+        min={1}
+        step={1}
+        value={width}
+        onChange={handleOnWidthChange}
+      />
+
+      <RangeInput
+        label={`Height ${height}px`}
+        id="heightRange"
+        max={400}
+        min={1}
+        step={1}
+        value={height}
+        onChange={handleOnHeightChange}
+      />
 
       <div className="box" style={{ width, height }} />
     </div>
