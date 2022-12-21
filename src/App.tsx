@@ -3,10 +3,18 @@ import { useState, ChangeEvent } from 'react'
 import RangeInput from './components/RangeInput';
 
 import './App.css'
+import ColorPicker from './components/ColorPicker';
+
+const INITIAL_STATE = {
+  height: 400 / 2,
+  width: 400 / 2,
+  color: '#4682b4',
+}
 
 function App() {
-  const [height, setHeight] = useState<number>(400 / 2);
-  const [width, setWidth] = useState<number>(800 / 2);
+  const [height, setHeight] = useState<number>(INITIAL_STATE.height);
+  const [width, setWidth] = useState<number>(INITIAL_STATE.width);
+  const [color, setColor] = useState<string>(INITIAL_STATE.color);
 
   const handleOnWidthChange = (event: ChangeEvent<HTMLInputElement>) => {
     setWidth(parseInt(event.target.value));
@@ -16,6 +24,9 @@ function App() {
     setHeight(parseInt(event.target.value));
   };
 
+  const handleOnColorChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setColor(event.target.value);
+  }
 
   return (
     <div className="container">
@@ -40,7 +51,9 @@ function App() {
         onChange={handleOnHeightChange}
       />
 
-      <div className="box" style={{ width, height }} />
+      <ColorPicker id="color-picker" label="Box BackgroundColor" onChange={handleOnColorChange} value={color} />
+
+      <div className="box" style={{ width, height, backgroundColor: color }} />
     </div>
   )
 }
