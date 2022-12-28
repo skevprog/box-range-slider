@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react'
 
-import RangeInput from './components/RangeInput';
+import RangeSlider from './components/RangeSlider';
 
 import './App.css'
 import ColorPicker from './components/ColorPicker';
@@ -31,7 +31,7 @@ function App() {
   return (
     <div className="container">
 
-      <RangeInput
+      <RangeSlider
         label={`Width ${width}px`}
         id="widthRange"
         max={800}
@@ -41,7 +41,7 @@ function App() {
         onChange={handleOnWidthChange}
       />
 
-      <RangeInput
+      <RangeSlider
         label={`Height ${height}px`}
         id="heightRange"
         max={400}

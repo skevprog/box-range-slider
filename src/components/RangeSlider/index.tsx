@@ -2,7 +2,7 @@ import { ChangeEvent } from 'react'
 
 import './styles.css';
 
-interface RangeInputProps {
+interface RangeSliderProps {
    max: number;
    min: number;
    step: number;
@@ -12,7 +12,16 @@ interface RangeInputProps {
    id: string;
 }
 
-function RangeInput({ max, min, step, value, onChange, id, label, ...inputRestProps }: RangeInputProps): JSX.Element {
+function RangeSlider({
+   max,
+   min,
+   step,
+   value,
+   onChange,
+   id,
+   label,
+   ...inputRestProps
+}: RangeSliderProps): JSX.Element {
    return (
       <div className="slider-container">
          {label && <label className="label" htmlFor={id}>{label}</label>}
@@ -24,9 +33,10 @@ function RangeInput({ max, min, step, value, onChange, id, label, ...inputRestPr
             step={step}
             value={value}
             onChange={onChange}
+            className="slider"
             {...inputRestProps}
          />
       </div>)
 }
 
-export default RangeInput;
+export default RangeSlider;
