@@ -1,9 +1,10 @@
 import { useState, ChangeEvent } from 'react'
 
 import RangeSlider from './components/RangeSlider';
+import ColorPicker from './components/ColorPicker';
+import Control from './components/common/Control';
 
 import './App.css'
-import ColorPicker from './components/ColorPicker';
 
 const INITIAL_STATE = {
   height: 400 / 2,
@@ -31,27 +32,38 @@ function App() {
   return (
     <div className="container">
 
-      <RangeSlider
-        label={`Width ${width}px`}
+      <Control
         id="widthRange"
-        max={800}
-        min={1}
-        step={1}
-        value={width}
-        onChange={handleOnWidthChange}
-      />
+        label={`Width ${width}px`}
+      >
+        <RangeSlider
+          max={800}
+          min={1}
+          step={1}
+          value={width}
+          onChange={handleOnWidthChange}
+        />
+      </Control>
 
-      <RangeSlider
-        label={`Height ${height}px`}
+      <Control
         id="heightRange"
-        max={400}
-        min={1}
-        step={1}
-        value={height}
-        onChange={handleOnHeightChange}
-      />
+        label={`Height ${height}px`}
+      >
+        <RangeSlider
+          max={400}
+          min={1}
+          step={1}
+          value={height}
+          onChange={handleOnHeightChange}
+        />
+      </Control>
 
-      <ColorPicker id="color-picker" label="Box BackgroundColor" onChange={handleOnColorChange} value={color} />
+      <Control
+        id="heightRange"
+        label="Box Color"
+      >
+        <ColorPicker onChange={handleOnColorChange} value={color} />
+      </Control>
 
       <div className="box" style={{ width, height, backgroundColor: color }} />
     </div>
