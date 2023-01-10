@@ -1,4 +1,4 @@
-import { ChangeEvent } from 'react'
+import React, { ChangeEvent } from 'react'
 
 interface RangeSliderProps {
    max: number;
@@ -15,7 +15,7 @@ function RangeSlider({
    value,
    onChange,
    ...inputRestProps
-}: RangeSliderProps): JSX.Element {
+}: RangeSliderProps & React.HTMLAttributes<HTMLInputElement>): JSX.Element {
    return (<>
       <input
          type="range"
